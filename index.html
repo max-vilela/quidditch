@@ -3,7 +3,7 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta name="theme-color" content="#071a19" />
+    <meta name="theme-color" content="#082f2a" />
     <title>Quadribol Manager</title>
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -13,94 +13,61 @@
   <body>
     <div class="app-shell">
       <aside class="sidebar" id="sidebar">
-        <a class="brand" href="#" aria-label="Quadribol Manager">
-          <span class="brand-mark">Q</span>
-          <span><strong>Quadribol</strong><small>MANAGER</small></span>
-        </a>
-
+        <button class="brand" data-view="dashboard"><span class="brand-mark">Q</span><span><strong>Quadribol</strong><small>MANAGER</small></span></button>
         <nav aria-label="Navegação principal">
-          <p class="nav-title">Clube</p>
-          <button class="nav-item active" data-view="Visão geral"><span>⌂</span> Visão geral</button>
-          <button class="nav-item" data-view="Meu time"><span>♟</span> Meu time</button>
-          <button class="nav-item" data-view="Táticas"><span>⌁</span> Táticas</button>
-          <button class="nav-item" data-view="Treinamento"><span>◷</span> Treinamento</button>
-          <p class="nav-title">Competição</p>
-          <button class="nav-item" data-view="Calendário"><span>□</span> Calendário</button>
-          <button class="nav-item" data-view="Classificação"><span>≡</span> Classificação</button>
-          <button class="nav-item" data-view="Mercado"><span>◇</span> Mercado</button>
+          <p class="nav-title">CAMPEONATO</p>
+          <button class="nav-item active" data-view="dashboard"><span>⌂</span> Visão geral</button>
+          <button class="nav-item" data-view="players"><span>♟</span> Jogadores</button>
+          <button class="nav-item" data-view="standings"><span>≡</span> Classificação</button>
+          <button class="nav-item" data-view="simulation"><span>✦</span> Simulação</button>
         </nav>
-
-        <div class="season-card">
-          <small>TEMPORADA ATUAL</small>
-          <strong>Taça das Casas</strong>
-          <div><span>2025/26</span><b>Rodada 8 de 14</b></div>
-          <progress max="14" value="8"></progress>
-        </div>
-        <button class="manager"><span class="avatar">JM</span><span><strong>João Martins</strong><small>Treinador</small></span><b>⌄</b></button>
+        <div class="season-card"><small>TEMPORADA ATUAL</small><strong>Taça das Casas</strong><div><span>Ida e volta</span><b id="season-progress">0 de 12 jogos</b></div><progress id="progress" max="12" value="0"></progress></div>
+        <button class="reset-button" id="reset-button">↻ Reiniciar campeonato</button>
       </aside>
 
       <main>
         <header>
           <button class="menu-toggle" id="menu-toggle" aria-label="Abrir menu">☰</button>
-          <div><p>TERÇA-FEIRA, 18 DE MARÇO</p><h1>Visão geral</h1></div>
-          <div class="header-actions">
-            <button class="icon-button" aria-label="Notificações">♢<i></i></button>
-            <button class="continue-button" id="continue-button">Continuar <span>→</span></button>
-          </div>
+          <div><p>TAÇA DAS CASAS • 2026</p><h1 id="page-title">Visão geral</h1></div>
+          <button class="primary-button" id="header-action">Cadastrar jogador <span>＋</span></button>
         </header>
 
-        <section class="hero-grid">
-          <article class="match-card">
-            <div class="eyebrow"><span>PRÓXIMA PARTIDA</span><b>EM 3 DIAS</b></div>
-            <div class="match-info">
-              <div class="team"><div class="crest gryffindor">G</div><strong>Grifinória</strong><small>2º lugar</small></div>
-              <div class="versus"><small>SEX, 21 MAR • 19:30</small><strong>VS</strong><span>Estádio de Hogwarts</span></div>
-              <div class="team"><div class="crest slytherin">S</div><strong>Sonserina</strong><small>4º lugar</small></div>
-            </div>
-            <div class="match-footer"><span>☁ Clima: Nublado</span><span>↗ Vento: 14 km/h</span><button id="prepare-button">Preparar partida →</button></div>
-          </article>
-
-          <article class="morale-card">
-            <div class="card-heading"><div><span>MORAL DO ELENCO</span><h2>Excelente</h2></div><span class="trend">↗ 8%</span></div>
-            <div class="morale-visual"><div class="gauge"><span>87<small>%</small></span></div><div><p><i class="dot green"></i> 5 jogadores em alta</p><p><i class="dot amber"></i> 1 precisa de atenção</p></div></div>
-            <blockquote>“O time está confiante para o clássico.”<cite>— Angelina Johnson, capitã</cite></blockquote>
-          </article>
+        <section class="view active" id="dashboard-view">
+          <div class="welcome-card">
+            <div><span class="eyebrow">CENTRAL DO TREINADOR</span><h2>Seu campeonato começa aqui.</h2><p>Cadastre os elencos, acompanhe a tabela e simule cada rodada da Taça das Casas.</p></div>
+            <button class="light-button" data-view="simulation">Simular próxima partida →</button>
+          </div>
+          <div class="stats-grid" id="stats-grid"></div>
+          <div class="dashboard-grid">
+            <article class="panel"><div class="panel-title"><div><span>PRÓXIMO CONFRONTO</span><h2>Agenda</h2></div><button data-view="simulation">Ver calendário →</button></div><div id="next-match"></div></article>
+            <article class="panel"><div class="panel-title"><div><span>TAÇA DAS CASAS</span><h2>Classificação</h2></div><button data-view="standings">Ver tabela →</button></div><div id="standings-preview"></div></article>
+          </div>
         </section>
 
-        <section class="content-grid">
-          <article class="panel squad-panel">
-            <div class="panel-title"><div><span>SEU ELENCO</span><h2>Formação titular</h2></div><button data-view="Meu time">Ver elenco completo →</button></div>
-            <div class="pitch">
-              <div class="pitch-line center"></div><div class="pitch-circle"></div>
-              <div class="player p1"><span>HP</span><strong>Harry P.</strong><small>APANHADOR</small></div>
-              <div class="player p2"><span>AJ</span><strong>Angelina J.</strong><small>ARTILHEIRA</small></div>
-              <div class="player p3"><span>KS</span><strong>Katie B.</strong><small>ARTILHEIRA</small></div>
-              <div class="player p4"><span>AB</span><strong>Alicia S.</strong><small>ARTILHEIRA</small></div>
-              <div class="player p5"><span>FW</span><strong>Fred W.</strong><small>BATEDOR</small></div>
-              <div class="player p6"><span>GW</span><strong>George W.</strong><small>BATEDOR</small></div>
-              <div class="player p7"><span>OW</span><strong>Oliver W.</strong><small>GOLEIRO</small></div>
-            </div>
-            <div class="formation-footer"><span><i></i> Titulares descansados</span><b>FORMAÇÃO 3—2—1</b></div>
-          </article>
+        <section class="view" id="players-view">
+          <div class="toolbar"><div><h2>Elencos</h2><p>Cadastre manualmente e organize os atletas de cada casa.</p></div><div class="toolbar-actions"><select id="team-filter" aria-label="Filtrar por time"></select><button class="primary-button" id="add-player">＋ Novo jogador</button></div></div>
+          <div class="team-tabs" id="team-tabs"></div>
+          <div class="panel table-wrap"><table><thead><tr><th>JOGADOR</th><th>POSIÇÃO</th><th>Nº</th><th>GERAL</th><th>ATQ</th><th>DEF</th><th>VEL</th><th>RES</th><th>MORAL</th><th></th></tr></thead><tbody id="players-body"></tbody></table><div class="empty-state" id="players-empty"><b>Nenhum jogador cadastrado</b><span>Use “Novo jogador” para montar este elenco.</span></div></div>
+        </section>
 
-          <div class="right-column">
-            <article class="panel table-panel">
-              <div class="panel-title"><div><span>TAÇA DAS CASAS</span><h2>Classificação</h2></div><button data-view="Classificação">Ver tabela →</button></div>
-              <table><thead><tr><th>#</th><th>TIME</th><th>J</th><th>SG</th><th>PTS</th></tr></thead><tbody>
-                <tr><td>1</td><td><i class="mini raven">R</i> Corvinal</td><td>7</td><td>+130</td><td><b>18</b></td></tr>
-                <tr class="highlight"><td>2</td><td><i class="mini gryf">G</i> Grifinória</td><td>7</td><td>+90</td><td><b>16</b></td></tr>
-                <tr><td>3</td><td><i class="mini huffle">L</i> Lufa-Lufa</td><td>7</td><td>+20</td><td><b>10</b></td></tr>
-                <tr><td>4</td><td><i class="mini slyth">S</i> Sonserina</td><td>7</td><td>−40</td><td><b>8</b></td></tr>
-              </tbody></table>
-            </article>
-            <article class="panel news-panel">
-              <div class="panel-title"><div><span>CORUJA DIÁRIA</span><h2>Últimas notícias</h2></div><button>•••</button></div>
-              <div class="news"><div class="news-image"><span>☄</span></div><div><small>HOJE • MERCADO</small><h3>Jovem promessa chama atenção dos olheiros</h3><p>Cedrico Diggory segue em grande fase pela Lufa-Lufa...</p></div></div>
-            </article>
+        <section class="view" id="standings-view">
+          <div class="toolbar"><div><h2>Tabela da competição</h2><p>Vitória vale 3 pontos, empate 1 e derrota 0. Você pode corrigir os números manualmente.</p></div><button class="secondary-button" id="edit-standings">✎ Editar tabela</button></div>
+          <div class="panel table-wrap"><table class="standings-table"><thead><tr><th>#</th><th>TIME</th><th>J</th><th>V</th><th>E</th><th>D</th><th>PF</th><th>PS</th><th>SG</th><th>PTS</th></tr></thead><tbody id="standings-body"></tbody></table></div>
+          <p class="table-note">Critérios de desempate: pontos, saldo de pontos e pontos feitos.</p>
+        </section>
+
+        <section class="view" id="simulation-view">
+          <div class="simulation-grid">
+            <article class="panel fixture-panel"><div class="panel-title"><div><span>CALENDÁRIO</span><h2>Ida e volta</h2></div><b id="fixture-count"></b></div><div class="fixtures" id="fixtures"></div></article>
+            <article class="simulator-card" id="simulator-card"></article>
           </div>
         </section>
       </main>
     </div>
+
+    <dialog id="player-dialog"><form method="dialog" id="player-form"><div class="dialog-heading"><div><span class="eyebrow">ELENCO</span><h2 id="player-dialog-title">Novo jogador</h2></div><button class="close-button" value="cancel" aria-label="Fechar">×</button></div><input type="hidden" id="player-id" /><div class="form-grid"><label class="wide">Nome completo<input id="player-name" required maxlength="40" placeholder="Ex.: Harry Potter" /></label><label>Time<select id="player-team" required></select></label><label>Posição<select id="player-position" required><option>Goleiro</option><option>Artilheiro</option><option>Batedor</option><option>Apanhador</option></select></label><label>Número<input id="player-number" type="number" min="1" max="99" required /></label><label>Nível geral<input id="player-overall" type="number" min="1" max="99" value="70" required /></label><label>Ataque<input id="player-attack" type="number" min="1" max="99" value="70" required /></label><label>Defesa<input id="player-defense" type="number" min="1" max="99" value="70" required /></label><label>Velocidade<input id="player-speed" type="number" min="1" max="99" value="70" required /></label><label>Resistência<input id="player-stamina" type="number" min="1" max="99" value="70" required /></label><label>Moral<input id="player-morale" type="number" min="1" max="99" value="75" required /></label></div><div class="dialog-actions"><button value="cancel" class="text-button">Cancelar</button><button value="default" class="primary-button" id="save-player">Salvar jogador</button></div></form></dialog>
+
+    <dialog id="standings-dialog"><form method="dialog" id="standings-form"><div class="dialog-heading"><div><span class="eyebrow">AJUSTE MANUAL</span><h2>Editar classificação</h2></div><button class="close-button" value="cancel">×</button></div><p class="dialog-copy">Informe os resultados acumulados. Pontos e saldo serão recalculados automaticamente.</p><div id="standings-fields"></div><div class="dialog-actions"><button value="cancel" class="text-button">Cancelar</button><button value="default" class="primary-button" id="save-standings">Salvar alterações</button></div></form></dialog>
     <div class="toast" id="toast" role="status"></div>
     <script src="app.js"></script>
   </body>
