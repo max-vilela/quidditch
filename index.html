@@ -1,0 +1,107 @@
+<!doctype html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="theme-color" content="#071a19" />
+    <title>Quadribol Manager</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Playfair+Display:wght@600;700&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <div class="app-shell">
+      <aside class="sidebar" id="sidebar">
+        <a class="brand" href="#" aria-label="Quadribol Manager">
+          <span class="brand-mark">Q</span>
+          <span><strong>Quadribol</strong><small>MANAGER</small></span>
+        </a>
+
+        <nav aria-label="Navegação principal">
+          <p class="nav-title">Clube</p>
+          <button class="nav-item active" data-view="Visão geral"><span>⌂</span> Visão geral</button>
+          <button class="nav-item" data-view="Meu time"><span>♟</span> Meu time</button>
+          <button class="nav-item" data-view="Táticas"><span>⌁</span> Táticas</button>
+          <button class="nav-item" data-view="Treinamento"><span>◷</span> Treinamento</button>
+          <p class="nav-title">Competição</p>
+          <button class="nav-item" data-view="Calendário"><span>□</span> Calendário</button>
+          <button class="nav-item" data-view="Classificação"><span>≡</span> Classificação</button>
+          <button class="nav-item" data-view="Mercado"><span>◇</span> Mercado</button>
+        </nav>
+
+        <div class="season-card">
+          <small>TEMPORADA ATUAL</small>
+          <strong>Taça das Casas</strong>
+          <div><span>2025/26</span><b>Rodada 8 de 14</b></div>
+          <progress max="14" value="8"></progress>
+        </div>
+        <button class="manager"><span class="avatar">JM</span><span><strong>João Martins</strong><small>Treinador</small></span><b>⌄</b></button>
+      </aside>
+
+      <main>
+        <header>
+          <button class="menu-toggle" id="menu-toggle" aria-label="Abrir menu">☰</button>
+          <div><p>TERÇA-FEIRA, 18 DE MARÇO</p><h1>Visão geral</h1></div>
+          <div class="header-actions">
+            <button class="icon-button" aria-label="Notificações">♢<i></i></button>
+            <button class="continue-button" id="continue-button">Continuar <span>→</span></button>
+          </div>
+        </header>
+
+        <section class="hero-grid">
+          <article class="match-card">
+            <div class="eyebrow"><span>PRÓXIMA PARTIDA</span><b>EM 3 DIAS</b></div>
+            <div class="match-info">
+              <div class="team"><div class="crest gryffindor">G</div><strong>Grifinória</strong><small>2º lugar</small></div>
+              <div class="versus"><small>SEX, 21 MAR • 19:30</small><strong>VS</strong><span>Estádio de Hogwarts</span></div>
+              <div class="team"><div class="crest slytherin">S</div><strong>Sonserina</strong><small>4º lugar</small></div>
+            </div>
+            <div class="match-footer"><span>☁ Clima: Nublado</span><span>↗ Vento: 14 km/h</span><button id="prepare-button">Preparar partida →</button></div>
+          </article>
+
+          <article class="morale-card">
+            <div class="card-heading"><div><span>MORAL DO ELENCO</span><h2>Excelente</h2></div><span class="trend">↗ 8%</span></div>
+            <div class="morale-visual"><div class="gauge"><span>87<small>%</small></span></div><div><p><i class="dot green"></i> 5 jogadores em alta</p><p><i class="dot amber"></i> 1 precisa de atenção</p></div></div>
+            <blockquote>“O time está confiante para o clássico.”<cite>— Angelina Johnson, capitã</cite></blockquote>
+          </article>
+        </section>
+
+        <section class="content-grid">
+          <article class="panel squad-panel">
+            <div class="panel-title"><div><span>SEU ELENCO</span><h2>Formação titular</h2></div><button data-view="Meu time">Ver elenco completo →</button></div>
+            <div class="pitch">
+              <div class="pitch-line center"></div><div class="pitch-circle"></div>
+              <div class="player p1"><span>HP</span><strong>Harry P.</strong><small>APANHADOR</small></div>
+              <div class="player p2"><span>AJ</span><strong>Angelina J.</strong><small>ARTILHEIRA</small></div>
+              <div class="player p3"><span>KS</span><strong>Katie B.</strong><small>ARTILHEIRA</small></div>
+              <div class="player p4"><span>AB</span><strong>Alicia S.</strong><small>ARTILHEIRA</small></div>
+              <div class="player p5"><span>FW</span><strong>Fred W.</strong><small>BATEDOR</small></div>
+              <div class="player p6"><span>GW</span><strong>George W.</strong><small>BATEDOR</small></div>
+              <div class="player p7"><span>OW</span><strong>Oliver W.</strong><small>GOLEIRO</small></div>
+            </div>
+            <div class="formation-footer"><span><i></i> Titulares descansados</span><b>FORMAÇÃO 3—2—1</b></div>
+          </article>
+
+          <div class="right-column">
+            <article class="panel table-panel">
+              <div class="panel-title"><div><span>TAÇA DAS CASAS</span><h2>Classificação</h2></div><button data-view="Classificação">Ver tabela →</button></div>
+              <table><thead><tr><th>#</th><th>TIME</th><th>J</th><th>SG</th><th>PTS</th></tr></thead><tbody>
+                <tr><td>1</td><td><i class="mini raven">R</i> Corvinal</td><td>7</td><td>+130</td><td><b>18</b></td></tr>
+                <tr class="highlight"><td>2</td><td><i class="mini gryf">G</i> Grifinória</td><td>7</td><td>+90</td><td><b>16</b></td></tr>
+                <tr><td>3</td><td><i class="mini huffle">L</i> Lufa-Lufa</td><td>7</td><td>+20</td><td><b>10</b></td></tr>
+                <tr><td>4</td><td><i class="mini slyth">S</i> Sonserina</td><td>7</td><td>−40</td><td><b>8</b></td></tr>
+              </tbody></table>
+            </article>
+            <article class="panel news-panel">
+              <div class="panel-title"><div><span>CORUJA DIÁRIA</span><h2>Últimas notícias</h2></div><button>•••</button></div>
+              <div class="news"><div class="news-image"><span>☄</span></div><div><small>HOJE • MERCADO</small><h3>Jovem promessa chama atenção dos olheiros</h3><p>Cedrico Diggory segue em grande fase pela Lufa-Lufa...</p></div></div>
+            </article>
+          </div>
+        </section>
+      </main>
+    </div>
+    <div class="toast" id="toast" role="status"></div>
+    <script src="app.js"></script>
+  </body>
+</html>
